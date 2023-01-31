@@ -1,0 +1,90 @@
+<main>
+  <div class="container">
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <h1>Cad User</h1>
+      <mat-form-field class="full-width">
+        <mat-label>First Name</mat-label>
+        <input name="name" matInput [formControl]="nameFormControl" placeholder="Ex. pat@example.com" ngModel>
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input name="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
+          ngModel>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Choose a date</mat-label>
+        <input name="birth_day" matInput [matDatepicker]="picker" [formControl]="dateFormControl" ngModel>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="dateFormControl.hasError('required')">
+          BirthDay is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Postal Code</mat-label>
+        <input (change)="getCep()" name="cep" mask="00000-000" matInput [formControl]="postalCodeFormControl" #postalCode
+          placeholder="Ex. 94105" value="94043" ngModel>
+        <mat-error *ngIf="postalCodeFormControl.hasError('required')">
+          Postal Code is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Address</mat-label>
+        <input matInput name="address" matInput [formControl]="addressFormControl" placeholder="Ex. 100 Main St"
+          ngModel />
+        <mat-error *ngIf="addressFormControl.hasError('required')">
+          Adress is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>City</mat-label>
+        <input [disabled]="true" name="city" matInput [formControl]="cityFormControl" placeholder="Ex. San Francisco" ngModel>
+        <mat-error *ngIf="cityFormControl.hasError('required')">
+          City is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>State</mat-label>
+        <input [disabled]="true" name="state" matInput [formControl]="stateFormControl" placeholder="Ex. California" ngModel>
+        <mat-error *ngIf="stateFormControl.hasError('required')">
+          State is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Enter your password</mat-label>
+        <input name="password" matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'" ngModel>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordFormControl.hasError('pattern') && !passwordFormControl.hasError('required')">
+          Please enter a valid password
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <section class="full-width">
+        <button value="submit" [disabled]="checkFormErros()" type="submit" class="full-width" mat-raised-button
+          color="primary">Save</button>
+      </section>
+    </form>
+  </div>
+</main>

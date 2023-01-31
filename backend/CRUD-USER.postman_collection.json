@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "785bd1e2-6156-4b57-b773-6811292fbc8c",
+		"name": "CRUD-USER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11162837"
+	},
+	"item": [
+		{
+			"name": "Find All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{crud_user}}/users",
+					"host": [
+						"{{crud_user}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": 1232,\r\n    \"email\": \"jeanp@gmail.com\",\r\n    \"password\": \"teste@T123\",\r\n    \"address\": \"Rua são caetano\",\r\n    \"city\": \"Fortaleza\",\r\n    \"state\": \"Ceará\",\r\n    \"cep\": \"123412\",\r\n    \"birth_day\": \"2019-01-16\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crud_user}}/users",
+					"host": [
+						"{{crud_user}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cep",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cep.awesomeapi.com.br/json/63900207",
+					"protocol": "https",
+					"host": [
+						"cep",
+						"awesomeapi",
+						"com",
+						"br"
+					],
+					"path": [
+						"json",
+						"63900207"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{crud_user}}",
+			"value": "http://localhost:3333",
+			"type": "string"
+		},
+		{
+			"key": "crud_user",
+			"value": "http://localhost:3333"
+		}
+	]
+}

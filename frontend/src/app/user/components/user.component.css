@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    padding: 10px;
+    max-width: 450px;
+}
+
+.form {
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
